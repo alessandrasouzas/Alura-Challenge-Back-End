@@ -16,33 +16,34 @@ import org.springframework.web.bind.annotation.RestController;
 import alura.chalenge.model.Midia;
 import alura.chalenge.service.MidiaService;
 
-@RestController
+@RestController	
+@RequestMapping("/videos")
 public class MidiaController {
 	
 	@Autowired
 	private MidiaService midiaService;
 	
-	@RequestMapping("/videos")
+	@GetMapping()
 	public List<Midia> list(){
 		return midiaService.getVideos();
 	}
 	
-	@GetMapping("/videos/{id}")
+	@GetMapping("/{id}")
 	public ResponseEntity<Midia> findVideoById(@PathVariable(value="id") Long id){	
 		return midiaService.getVideoById(id);
 	}
 	
-	@PostMapping("/videos")
+	@PostMapping()
 	public void create(@RequestBody Midia midia){	
 		midiaService.createVideo(midia);
 	}
 
-	@PutMapping("/videos/update")
+	@PutMapping()
 	public ResponseEntity<Midia> update(@RequestBody Midia midia) {
 		return midiaService.updateVideo(midia);
 	}
 
-	@DeleteMapping("/videos/{id}")
+	@DeleteMapping("/{id}")
 	public ResponseEntity<Midia> deleteVideoById(@PathVariable(value="id") Long id){	
 		return midiaService.deleteVideoById(id);
 	}
