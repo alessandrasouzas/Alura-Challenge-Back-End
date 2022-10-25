@@ -38,14 +38,12 @@ public class MidiaController {
 	}
 
 	@PutMapping("/videos/update")
-	public String update(@RequestBody Midia midia) {
-		// Atender uma requisição capaz de atualizar um ou mais campos de um vídeo.
-		// Retornar um Json com informações do filme atualizado.
-		return null;
+	public ResponseEntity<Midia> update(@RequestBody Midia midia) {
+		return midiaService.updateVideo(midia);
 	}
 
 	@DeleteMapping("/videos/{id}")
-	public String deleteVideoById(@PathVariable(value="id") Long id){	
+	public ResponseEntity<Midia> deleteVideoById(@PathVariable(value="id") Long id){	
 		return midiaService.deleteVideoById(id);
 	}
 }

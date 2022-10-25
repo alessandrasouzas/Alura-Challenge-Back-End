@@ -34,10 +34,32 @@ public class MidiaService {
 		midiaRepository.save(midia);		
 	}
 
-	public String deleteVideoById(Long id) {
-		//Retornar uma mensagem de sucesso ou falha.
-		return null;
+	public ResponseEntity<Midia> updateVideo(Midia midia) {
+		Optional<Midia> result = midiaRepository.findById(midia.getId());
+		
+		if(result.isPresent()) {			
+			result.get().setTitle(midia.getTitle());
+			result.get().setDescription(midia.getDescription());
+			result.get().setUrl(midia.getUrl());
+			midiaRepository.save(result.get());
+			
+			return new ResponseEntity<Midia>(result.get(), HttpStatus.OK);
+		}
+		
+		return new ResponseEntity<>(HttpStatus.valueOf("Não encontrado"));
 	}
+	
+	public ResponseEntity<Midia> deleteVideoById(Long id) {
+		Optional<Midia> midia = midiaRepository.findById(id);
+		if (midia.isPresent()) {
+			midiaRepository.deleteById(id);
+			return new ResponseEntity<Midia>(midia.get(), HttpStatus.OK);
+		}
+		else
+			return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
+	}
+
+
 
 
 }
