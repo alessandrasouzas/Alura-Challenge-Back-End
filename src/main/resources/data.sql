@@ -1,10 +1,9 @@
 CREATE TABLE MIDIA (
 	ID INT NOT NULL,
 	TITLE VARCHAR(30) NOT NULL, 
-	DESCRIPTION VARCHAR(150),
+	DESCRIPTION VARCHAR(150) NOT NULL,
 	URL VARCHAR(50) NOT NULL	
 );
 
-INSERT INTO `midia` (`id`, `title`, `description`, `url`) VALUES (1, 'galas_feios', 'live dos galas', 'you.be/galas');
-
-INSERT INTO `midia` (`id`, `title`, `description`, `url`) VALUES (2, 'mikannn', 'live', 'you.be/mik');
+INSERT INTO MIDIA (ID, TITLE, DESCRIPTION, URL) VALUES (1, 'galas_feios', 'live dos galas', 'you.be/galas');
+INSERT INTO MIDIA (ID, TITLE, DESCRIPTION, URL) VALUES (2, 'mikannn', 'live', 'you.be/mik');

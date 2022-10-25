@@ -27,12 +27,16 @@ public class MidiaService {
 		if (midia.isPresent())
 			return new ResponseEntity<Midia>(midia.get(), HttpStatus.OK);
 		else
-			return new ResponseEntity<>(HttpStatus.valueOf("Não encontrado"));
+			return new ResponseEntity<>(HttpStatus.valueOf("Não encontrado"));//trocar para lançar excecoes especificas
 	}
 
 	public void createVideo(Midia midia) {
-		//	method here		
-		
+		midiaRepository.save(midia);		
+	}
+
+	public String deleteVideoById(Long id) {
+		//Retornar uma mensagem de sucesso ou falha.
+		return null;
 	}
 
 
