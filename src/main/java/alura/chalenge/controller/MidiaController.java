@@ -24,27 +24,27 @@ public class MidiaController {
 	private MidiaService midiaService;
 	
 	@GetMapping()
-	public List<Midia> list(){
-		return midiaService.getVideos();
+	public ResponseEntity<List<Midia>> buscarTodos(){
+		return midiaService.buscarTodos();
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Midia> findVideoById(@PathVariable(value="id") Long id){	
-		return midiaService.getVideoById(id);
+	public ResponseEntity<Midia> buscarPeloId(@PathVariable(value="id") Long id){	
+		return midiaService.buscarPeloId(id);
 	}
 	
 	@PostMapping()
-	public void create(@RequestBody Midia midia){	
-		midiaService.createVideo(midia);
+	public ResponseEntity<String> criarVideo(@RequestBody Midia midia){	
+		return midiaService.criarVideo(midia);
 	}
 
 	@PutMapping()
-	public ResponseEntity<Midia> update(@RequestBody Midia midia) {
-		return midiaService.updateVideo(midia);
+	public ResponseEntity<Midia> atualizarVideo(@RequestBody Midia midia) {
+		return midiaService.atualizarVideo(midia);
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Midia> deleteVideoById(@PathVariable(value="id") Long id){	
-		return midiaService.deleteVideoById(id);
+	public ResponseEntity<Midia> deletarVideoPeloId(@PathVariable(value="id") Long id){	
+		return midiaService.deletarVideoPeloId(id);
 	}
 }
